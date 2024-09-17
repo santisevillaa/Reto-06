@@ -21,7 +21,9 @@ function Pokemones() {
           return (
             <div className="cartaPokemon" key={pokemon.name}>
               <h3>
-                <Link to={"/pokemones/" + urlCortada[6]}>{pokemon.name}</Link>
+                <Link to={"/pokemones/" + urlCortada[6]} className="link">
+                  {pokemon.name}
+                </Link>
               </h3>
               <button>Agregar a favoritos</button>
             </div>

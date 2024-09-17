@@ -1,0 +1,39 @@
+.containerPokemon {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #212121;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.containerPokemonDetalle {
+  background: orange;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgDetalle {
+  width: 550px;
+  height: 560px;
+  border-bottom: 2px solid #212121;
+}
+
+button {
+  margin: 10px;
+}
+
+.botonesTarjeta {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
