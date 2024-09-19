@@ -16,7 +16,7 @@ function Pokemones() {
     const apiPokemones = async () => {
       const respuesta = await axios.get(
         "https://pokeapi.co/api/v2/pokemon?limit=24"
-      ); // Puedes limitar la cantidad de Pokémon que traes
+      ); 
       const pokemonesConDetalles = await Promise.all(
         respuesta.data.results.map(async (pokemon) => {
           const detalleRespuesta = await axios.get(pokemon.url);
