@@ -6,7 +6,7 @@
   "homepage": "https://santisevillaa.github.io/Reto06",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "react-scripts build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
