@@ -1,6 +1,6 @@
 import React from "react";
-import "../src/estilos/App.css";
 import { Link } from "react-router-dom";
+import "../estilos/App.css";
 function App() {
   return (
     <>

@@ -1,8 +1,6 @@
-import { createRoot } from "react-dom/client";
 import React from "react";
-import App from "../src/rutas/index.jsx";
-import "../src/estilos/App.css";
+import { createRoot } from "react-dom/client";
+import App from "./rutas/index.jsx";
+import "./estilos/App.css";
 
-createRoot(document.getElementById("root")).render(
-    <App />
-);
+createRoot(document.getElementById("root")).render(<App />);

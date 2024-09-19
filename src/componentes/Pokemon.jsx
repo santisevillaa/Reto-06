@@ -1,9 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../src/estilos/Pokemon.css";
+import { useContext } from "react";
+import Contexto from "../contexto/Contexto.jsx"; // Importa el contexto
+import "../estilos/Pokemon.css";
+
+const GUARDAME_POKEMON = "GUARDAME_POKEMON";
 
 function Pokemon() {
+  const { state, dispatch } = useContext(Contexto); // Accede al estado global
   const [pokemon, setPokemon] = useState([]);
   const location = useLocation();
   const locationSplit = location.pathname.split("/");
@@ -11,11 +16,14 @@ function Pokemon() {
   const apiPokemon = async () => {
     const respuesta = await axios.get(url);
     setPokemon(respuesta.data);
-    console.log(respuesta.data);
   };
   useEffect(() => {
     apiPokemon();
   }, [url]);
+  const agregarAFavoritos = (pokemon) => {
+    dispatch({ type: GUARDAME_POKEMON, payload: pokemon });
+    console.log(pokemon);
+  };
   return (
     <div className="containerPokemonDetalle">
       <div className="containerPokemon">
@@ -25,6 +33,7 @@ function Pokemon() {
           className="imgDetalle"
         />
         <h3>{pokemon?.name}</h3>
+        <h3>Altura: {pokemon?.height}</h3>
         <h3>Peso: {pokemon?.weight}</h3>
         <div className="botonesTarjeta">
           <button>
@@ -32,7 +41,9 @@ function Pokemon() {
               Volver a la lista
             </Link>
           </button>
-          <button>Agregar a favoritos</button>
+          <button onClick={() => agregarAFavoritos(pokemon)}>
+            Agregar a favoritos
+          </button>
         </div>
       </div>
     </div>
