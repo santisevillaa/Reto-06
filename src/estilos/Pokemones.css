@@ -1,7 +1,7 @@
 .containerPokemones {
   width: 100%;
-  height: calc(100vh - 100px);
-  background: #FFCCBC;
+  height: calc(100vh - 90px);
+  background: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
 .cartaPokemon {
   border-radius: 10px;
   color: #212121;
-  background: #607D8B;
+  background: #F44336;
   border: 2px solid #212121;
   display: inline-block;
   margin: 20px;
@@ -18,4 +18,9 @@
   height: 180px;
   align-content: center;
   text-align: center;
+}
+
+.imgPokemon {
+  width: 30%; 
+  height: auto; 
 }

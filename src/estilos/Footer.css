@@ -1,5 +1,8 @@
 footer {
-  height: 40px;
-  background: #E64A19;
-  color: #ffffff;
+  height: 30px;
+  background: #D32F2F;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

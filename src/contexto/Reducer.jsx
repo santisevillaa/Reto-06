@@ -19,7 +19,9 @@ export default function Reducer(state = estadoInicial, action) {
     // Caso para agregar un Pokémon a los favoritos
     case GUARDAME_POKEMON:
       // Verificamos si el Pokémon ya está en favoritos
-      const isFavorite = state.favoritos.some((fav) => fav.id === payload.id);
+      const isFavorite = state.favoritos.some(
+        (fav) => fav.name === payload.name
+      );
       if (!isFavorite) {
         return {
           ...state,

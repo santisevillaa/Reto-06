@@ -1,14 +1,36 @@
 body {
   margin: 0px;
   padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .containerHome {
   width: 100%;
-  height: calc(100vh - 100px);
-  background: #FFCCBC;
+  height: calc(100vh - 90px);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+ul {
+  color: #ffffff;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: #FFEB3B;
+  color: #212121;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 25px;
+  
 }

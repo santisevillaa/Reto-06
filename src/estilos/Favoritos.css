@@ -1,9 +1,35 @@
 .containerFavoritos {
-    width: 100%;
-    height: calc(100vh - 100px);
-    background: #FFCCBC;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: calc(100vh - 90px);
+  background: #FFFFFf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartaContainer {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las cartas se envuelvan */
+  justify-content: center; /* Centra las cartas */
+}
+
+.cartaFav {
+  display: flex;
+  color: #FFFFFF;
+  flex-direction: column; /* Alinea el contenido verticalmente */
+  width: 250px;
+  height: 250px; /* Ajusta la altura para más espacio */
+  margin: 10px; /* Espaciado entre cartas */
+  border: 2px solid black;
+  border-radius: 10px; /* Bordes redondeados */
+  background: #F44336; /* Fondo blanco para las cartas */
+  align-items: center; /* Centra el contenido de las cartas */
+  padding: 10px; /* Espacio interno */
+}
+
+.imgFav {
+  width: 70%; /* Ajusta según necesites */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 5px; /* Bordes redondeados */
 }

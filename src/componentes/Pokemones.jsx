@@ -14,32 +14,47 @@ function Pokemones() {
   // Obtener la lista de Pokémon desde la API
   useEffect(() => {
     const apiPokemones = async () => {
-      const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon");
-      dispatch({ type: LISTA_POKEMONES, payload: respuesta.data.results });
+      const respuesta = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=24"
+      ); // Puedes limitar la cantidad de Pokémon que traes
+      const pokemonesConDetalles = await Promise.all(
+        respuesta.data.results.map(async (pokemon) => {
+          const detalleRespuesta = await axios.get(pokemon.url);
+          return {
+            id: detalleRespuesta.data.id,
+            name: detalleRespuesta.data.name,
+            sprites: detalleRespuesta.data.sprites,
+          };
+        })
+      );
+      dispatch({ type: LISTA_POKEMONES, payload: pokemonesConDetalles });
+      console.log(pokemonesConDetalles);
     };
     apiPokemones();
   }, [dispatch]);
 
   const agregarAFavoritos = (pokemon) => {
     dispatch({ type: GUARDAME_POKEMON, payload: pokemon });
-    console.log(pokemon);
-    console.log("Favoritos actuales:", state.favoritos);
   };
 
   return (
     <div className="containerPokemones">
       <ul>
         {state.pokemones.map((pokemon) => {
-          let urlCortada = pokemon.url.split("/");
           return (
             <div className="cartaPokemon" key={pokemon.name}>
+              <img
+                src={pokemon.sprites?.front_default}
+                alt={pokemon.name}
+                className="imgPokemon"
+              />
               <h3>
-                <Link to={"/pokemones/" + urlCortada[6]} className="link">
+                <Link to={"/pokemones/" + pokemon.id} className="link">
                   {pokemon.name}
                 </Link>
               </h3>
               <button onClick={() => agregarAFavoritos(pokemon)}>
-                Agregar a favoritos
+                Favorito
               </button>
             </div>
           );

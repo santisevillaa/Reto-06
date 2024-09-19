@@ -16,13 +16,18 @@ function Pokemon() {
   const apiPokemon = async () => {
     const respuesta = await axios.get(url);
     setPokemon(respuesta.data);
+    console.log(respuesta.data);
   };
   useEffect(() => {
     apiPokemon();
   }, [url]);
   const agregarAFavoritos = (pokemon) => {
-    dispatch({ type: GUARDAME_POKEMON, payload: pokemon });
-    console.log(pokemon);
+    const pokemonCompleto = {
+      id: pokemon.id,
+      name: pokemon.name,
+      sprites: pokemon.sprites,
+    };
+    dispatch({ type: GUARDAME_POKEMON, payload: pokemonCompleto });
   };
   return (
     <div className="containerPokemonDetalle">
@@ -32,9 +37,18 @@ function Pokemon() {
           alt=""
           className="imgDetalle"
         />
-        <h3>{pokemon?.name}</h3>
-        <h3>Altura: {pokemon?.height}</h3>
-        <h3>Peso: {pokemon?.weight}</h3>
+        <h1>{pokemon?.name}</h1>
+        <div className="dataPokemon">
+          <h3>Altura: {pokemon?.height}</h3>
+          <h3>Peso: {pokemon?.weight}</h3>
+          <ul className="ulPokemon">
+            Tipo:
+            {pokemon.types &&
+              pokemon.types.map((typeInfo, index) => (
+                <li key={index}>{typeInfo.type.name}</li>
+              ))}
+          </ul>
+        </div>
         <div className="botonesTarjeta">
           <button>
             <Link to={"/pokemones"} className="link">
@@ -42,7 +56,7 @@ function Pokemon() {
             </Link>
           </button>
           <button onClick={() => agregarAFavoritos(pokemon)}>
-            Agregar a favoritos
+            Agregar como favorito
           </button>
         </div>
       </div>
